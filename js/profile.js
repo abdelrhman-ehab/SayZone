@@ -275,6 +275,7 @@ function deleteUserPosts(posts) {
     let postsArray = posts;
     deleteBtns.forEach((deleteBtn, i) => {
         deleteBtn.addEventListener('click', async () => {
+            deleteBtn.disabled = true;
             try{
                 let response = await axios.delete(`${baseURL}posts/${postsArray[i].id}`, {
                     headers:
@@ -288,6 +289,10 @@ function deleteUserPosts(posts) {
             catch(e){
                 toastr['error'](`${e.response.data.message} please try again`)
             }
+            finally{
+                deleteBtn.disabled = false;
+            }
         })
     });
 }
+
