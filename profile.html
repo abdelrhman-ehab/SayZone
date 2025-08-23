@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linkly</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/toastr.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container py-3">
+        <div class="container-fluid">
+            <a href="index.html" class="me-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="" id="profileLink">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#registerModal" id="homeRegister">Register</li>
+                            <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" id="homeLogin">Login</li>
+                            <li class="dropdown-item" id="homeLogout">Logout</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>  
+        </div>
+        </nav>
+    </header>
+    <main>
+        <!-- user info -->
+        <div id="userInfoContainer" class="container w-50">
+
+        </div>
+
+        <!-- user posts -->
+        <div id="myPostsContainer" class="container w-50 d-block mt-4">
+            <!-- spinner loader -->
+            <div class="spinnerContainer w-100 d-flex justify-content-center align-items-center">
+                <span class="loader"></span>
+            </div>
+        </div>
+
+
+        <!-- login modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <a href="index.html" class="w-100 d-flex justify-content-center py-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+                        <div class="mb-3">
+                            <label for="Lusername" class="col-form-label">username:</label>
+                            <input type="text" class="form-control" id="Lusername">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Lpassword" class="col-form-label">password:</label>
+                            <input type="password" class="form-control" id="Lpassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- register modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="registerModalLabel">Register a New User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <a href="index.html" class="w-100 d-flex justify-content-center py-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+                        <div class="mb-3">
+                            <label for="Rname" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="Rname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Rusername" class="col-form-label">Username:</label>
+                            <input type="text" class="form-control" id="Rusername">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Remail" class="col-form-label">Email:</label>
+                            <input type="email" class="form-control" id="Remail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Rpassword" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="Rpassword">
+                        </div>
+                        <div class="mb-3">
+                            <label for="userImage" class="col-form-label">Image:</label>
+                            <input type="file" accept="image/*" class="form-control" id="userImage">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="registerBtn">Register</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- update profile data -->
+        <div class="modal fade" id="UpdateProfileModal" tabindex="-1" aria-labelledby="UpdateProfileModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="UpdateProfileModalLabel">Update Profile</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <a href="index.html" class="w-100 d-flex justify-content-center py-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+                        <div class="mb-3">
+                            <label for="Uusername" class="col-form-label">username:</label>
+                            <input type="text" class="form-control" id="Uusername">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Upassword" class="col-form-label">password:</label>
+                            <input type="password" class="form-control" id="Upassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="UpdateBtn">Update</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- add post modal -->
+        <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addPostModalLabel">Add a New Post</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <a href="index.html" class="w-100 d-flex justify-content-center py-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+                        <div class="mb-3">
+                            <label for="postBody" class="col-form-label">Caption:</label>
+                            <textarea class="form-control" id="postBody"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="postImage" class="col-form-label">Image:</label>
+                            <input type="file" accept="image/*" class="form-control" id="postImage">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addPostButton">Add Post</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- edit post modal -->
+        <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editPostModalLabel">Edit Your Post</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <a href="index.html" class="w-100 d-flex justify-content-center align-items-center py-3"><img class="brandLogo" src="assets/sayzone-high-resolution-logo-transparent.png" alt="brand logo"></a>
+                        <div class="mb-3">
+                            <label for="profilePostBody" class="col-form-label">Caption:</label>
+                            <textarea class="form-control" id="profilePostBody"></textarea>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="postImage" class="col-form-label">Image:</label>
+                            <input type="file" accept="image/*" class="form-control" id="postImage">
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="editButton">Edit Post</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js" integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/toastr.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/utlis.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>
