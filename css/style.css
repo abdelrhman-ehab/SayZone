@@ -326,6 +326,10 @@ textarea {
     .postComments {
         padding: 5px 20px;
     }
+
+    .usersComments {
+        padding: 5px 20px;
+    }
 }
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
@@ -365,6 +369,10 @@ textarea {
     .postComments {
         padding: 5px 20px;
     }
+
+    .usersComments {
+        padding: 5px 20px;
+    }
 }
 
 @media screen and (min-width: 601px) and (max-width: 800px) {
@@ -377,4 +385,5 @@ textarea {
     }
 
 }
+
 
